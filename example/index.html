@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auto Fill Example</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../src/jquery.autofill.js"></script>
+    <script>
+      $(function() {
+        var strings = [
+          'Red',
+          'Green',
+          'Blue',
+          'Yellow',
+          'Orange',
+          'Purple'
+        ];
+
+        $('input').autofill({ 
+          replace: function(text) { 
+            if(text.length < 2) {
+              return '';
+            }
+            for(var i = 0; i < strings.length; i++) {
+              var str = strings[i];
+              if(str.substring(0, text.length).toLowerCase() == text.toLowerCase()) {
+                return str;
+              }
+            }
+            return '';
+          }
+        });
+      });
+    </script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      input, span {
+        font-family: sans-serif;
+        font-size: 24px;
+      }
+      input, div {
+        border: 1px solid #aaa;
+        width: 240px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Autofill Example</h1>
+    <p>Type Red, Green, Blue, Yellow, Orange or Purple</p>
+    <form>
+      Colour: <input type="text" name="q"><button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
