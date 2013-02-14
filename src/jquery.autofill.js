@@ -53,7 +53,7 @@
     }
  
     var pos = getCarat(textSpan).anchorOffset;
-    if(e.type == 'keydown' && e.keyCode == 13 || e.keyCode == 91) {
+    if(e.type == 'keydown' && e.keyCode == 13 || (pos == text.length && e.keyCode == 39)) {
       if(e.keyCode == 13) {
         e.preventDefault();
       }
